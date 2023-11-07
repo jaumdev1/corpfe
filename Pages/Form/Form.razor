@@ -1,0 +1,63 @@
+﻿@page "/form"
+@using BlazorApp.Data
+@inject WeatherForecastService ForecastService
+@layout EmptyLayout
+<div class="container">
+    <h1>Forms Corp</h1>
+
+    <form class="d-flex gap-2 flex-column">
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" class="form-control" @bind="name" />
+        </div>
+        
+         <div class="form-group">
+            <label for="name">E-mail</label>
+            <input type="text" id="email" class="form-control" @bind="email" />
+        </div>
+
+        <div class="form-group">
+            <label>Choose your favorite color:</label>
+            <div>
+                      @foreach (var color in favoriteColors)
+        {
+            <div>
+                <input type="radio" id="@color" name="favoriteColor" value="@color" checked="@IsColorSelected(color)" />
+                <label for="@color">@color</label>
+            </div>
+        }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Comments</label>
+            <textarea id="comments" class="form-control" @bind="comments"></textarea>
+        </div>
+
+        <button class="btn btn-primary" @onclick="SubmitForm">Submit</button>
+    </form>
+</div>
+
+@code {
+    private string name = "";
+    private string email = "";
+    private string selectedColor = "";
+    private string comments = "";
+
+    private List<string> favoriteColors = new List<string>
+    {
+        "Red", "Green", "Blue", "Yellow", "Other"
+    };
+
+    private void SubmitForm()
+    {
+        // Process the form data as needed, e.g., send it to a server or display it.
+        Console.WriteLine("Name: " + name);
+        Console.WriteLine("Favorite Color: " + selectedColor);
+        Console.WriteLine("Comments: " + comments);
+    }
+      private bool IsColorSelected(string color)
+    {
+        return color == selectedColor;
+    }
+}

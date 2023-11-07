@@ -1,0 +1,7 @@
+/home/jaum/projects/BlazorApp/out/BlazorApp
+/home/jaum/projects/BlazorApp/out/appsettings.Development.json
+/home/jaum/projects/BlazorApp/out/appsettings.json
+/home/jaum/projects/BlazorApp/out/BlazorApp.dll
+/home/jaum/projects/BlazorApp/out/BlazorApp.deps.json
+/home/jaum/projects/BlazorApp/out/BlazorApp.runtimeconfig.json
+/home/jaum/projects/BlazorApp/out/BlazorApp.pdb

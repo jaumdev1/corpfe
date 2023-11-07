@@ -1,0 +1,35 @@
+﻿@page "/"
+@layout EmptyLayout
+<div class="p-2">
+<PageTitle>Corp fe</PageTitle>
+<EditForm Model="exModel" class="form-index justify-content-center d-flex flex-column align-items-center gap-2">
+<h1>Corp fe</h1>
+<div>
+<p>
+Access to the <NavLink class="btn-link" href="login"> private corp</NavLink> or do you have the  question form:
+</p>
+<InputText id="nome" @bind-Value="exModel.codeForm"  placeholder="# FWQ34C" class="input-text form-control" />
+</div>
+<div>
+
+</div>
+<button class="btn btn-prm" @onclick="calculateCode">Join Form</button>
+</EditForm>
+</div>
+
+@code {
+    private ExModel exModel = new ExModel();
+
+    public class ExModel
+    {
+      public string? codeForm { get; set; }
+    }
+ 
+    private int currentCount = 0;
+
+    private void calculateCode()
+    {
+        currentCount++;
+    }
+
+}
