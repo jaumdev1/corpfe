@@ -2,39 +2,46 @@
 @using BlazorApp.Data
 @inject WeatherForecastService ForecastService
 @layout EmptyLayout
-<div class="container">
+<div class="container d-flex gap-2 flex-column justify-content-center  align-items-center">
     <h1>Forms Corp</h1>
 
-    <form class="d-flex gap-2 flex-column">
-        <div class="form-group">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" class="form-control" @bind="name" />
-        </div>
-        
-         <div class="form-group">
-            <label for="name">E-mail</label>
-            <input type="text" id="email" class="form-control" @bind="email" />
-        </div>
+    <form class="d-flex gap-2 flex-column justify-content-center  align-items-center w-50">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" class="form-control" @bind="name" />
+                </div>
+            </div>
 
-        <div class="form-group">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="text" id="email" class="form-control" @bind="email" />
+                </div>
+            </div>
+       
+
+        <div class="form-group col-md-6">
             <label>Choose your favorite color:</label>
             <div>
-                      @foreach (var color in favoriteColors)
-        {
-            <div>
-                <input type="radio" id="@color" name="favoriteColor" value="@color" checked="@IsColorSelected(color)" />
-                <label for="@color">@color</label>
-            </div>
-        }
+                @foreach (var color in favoriteColors)
+                {
+                    <div>
+                        <input type="radio" id="@color" name="favoriteColor" value="@color" checked="@IsColorSelected(color)" />
+                        <label for="@color">@color</label>
+                    </div>
+                }
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-6">
             <label for="comments">Comments</label>
             <textarea id="comments" class="form-control" @bind="comments"></textarea>
         </div>
 
         <button class="btn btn-primary" @onclick="SubmitForm">Submit</button>
+         </div>
     </form>
 </div>
 
@@ -53,10 +60,12 @@
     {
         // Process the form data as needed, e.g., send it to a server or display it.
         Console.WriteLine("Name: " + name);
+        Console.WriteLine("Email: " + email);
         Console.WriteLine("Favorite Color: " + selectedColor);
         Console.WriteLine("Comments: " + comments);
     }
-      private bool IsColorSelected(string color)
+
+    private bool IsColorSelected(string color)
     {
         return color == selectedColor;
     }
